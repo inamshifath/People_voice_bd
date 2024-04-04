@@ -1,0 +1,9 @@
+.vertical-hr {
+    border: none;
+    border-left: 1px solid rgb(160, 158, 158); /* Adjust color and thickness as needed */
+    height: 390px; /* Adjust height as needed */
+    margin: 0; /* Adjust spacing as needed */
+}
+.line{
+    border-top:1px solid rgb(160, 158, 158); ;
+}
