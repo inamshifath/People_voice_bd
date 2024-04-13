@@ -1,81 +1,57 @@
 import { useLoaderData } from "react-router-dom";
-import InterNational from "../InterNational/InterNational";
-import National from "../National/National";
-import { useState } from "react";
-import PropTypes from 'prop-types';
-
-const TruncatedArticle = ({ details }) => {
-    const [isExpanded, setIsExpanded] = useState(false);
-  
-    const handleExpand = () => {
-      setIsExpanded(true);
-    };
-  
-    const truncatedContent = details.split(' ').slice(0, 30).join(' ');
-  
-    return (
-      <div>
-        <p>{isExpanded ? details : truncatedContent}{!isExpanded && <span className="text-3xl text-blue-600 ml-2" onClick={handleExpand}>... </span>}</p>
-        
-      </div>
-    );
-};
-
-TruncatedArticle.propTypes = {
-    details: PropTypes.string.isRequired
-};
-
-const TruncatedArticlesmall = ({ details }) => {
-    const [isExpanded, setIsExpanded] = useState(false);
-  
-    const handleExpand = () => {
-      setIsExpanded(true);
-    };
-  
-    const truncatedContent = details.split(' ').slice(0, 10).join(' ');
-  
-    return (
-      <div>
-        <p>{isExpanded ? details : truncatedContent}</p>
-        {!isExpanded && <span className="text-3xl text-blue-600" onClick={handleExpand}>... </span>}
-      </div>
-    );
-  };
-  TruncatedArticlesmall.propTypes = {
-    details: PropTypes.string.isRequired
-};
-
-
+import PartOneHome from "./PartOneHome";
+import Part2Home from "./Part2Home";
+import Part3Home from "./Part3Home";
+import { FaInfinity } from "react-icons/fa6";
 
 const Home = () => {
 
     const allnews = useLoaderData();
+    const len = allnews.length;
+    let t = [];
+    for( let i=len-2;i>=len-5;i--){
+        t.push(i);
+    }
+    let l = [];
+    for( let i=len-6;i>=len-8;i--){
+        l.push(i);
+    }
+
+    const education= allnews.filter(item => item.news_catagory === 'education');
+    const lenE =education.length;
+
+    const tech = allnews.filter(item => item.news_catagory === 'tech');
+    const lenT =tech.length;
+
+    const agriculture = allnews.filter(item => item.news_catagory === 'agriculture');
+    const lenA =agriculture.length;
+  
 
     return (
         <div className="container mx-auto">
             <div className="flex gap-4">
                 <div className="grid grid-cols-3 grid-rows-3 mt-5 gap-5">
                     <div className="row-span-2 col-span-2 space-y-3 ">
-                        <img className="w-full" src={allnews[0].news_image} alt="" />
-                        <h1 className="text-3xl font-semibold text-red-800">{allnews[0].news_title} </h1>
-                        <TruncatedArticle details={allnews[0].news_details} ></TruncatedArticle>
+                        <img className="w-full" src={allnews[len-1].news_image} alt="" />
+                        <h1 className="text-3xl hover:text-green-800 font-semibold ">{allnews[0].news_title} </h1>
+                        <p>{allnews[len-1].news_details.slice(0,250)}<span className="text-xl font-semibold"> . . .</span></p>
                     </div>
                     <div className="row-span-2">
-                        {[1, 2, 3].map((index) => (
+                        {t.map((index) => (
                             <div className="flex mb-5" key={index}>
                                 <div>
-                                    <h1 className="text-xl font-semibold">{allnews[index].news_title}</h1>
-                                    <TruncatedArticlesmall details={allnews[index].news_details} />
+                                    <h1 className="text-xl hover:text-green-800 font-semibold">{allnews[index].news_title}</h1>
+                                    <p>{allnews[index].news_details.slice(0,87)}<span className="text-xl font-semibold"> . . .</span></p>
                                 </div>
                                 <img className="w-40 h-28" src={allnews[index].news_image} alt="" />
                             </div>
                         ))}
                     </div>
                     <div className="col-span-3 flex gap-2 ">
-                        {[2,3,4].map((index)=>(
+                        {l.map((index)=>(
                             <div className="flex items-center gap-2" key={index}>
-                            <img className="w-52 h-32" src={allnews[index].news_image} alt="" />
-                            <h1 className="text-xl font-medium">{allnews[index].news_title}</h1>
+                                <img className="w-52 h-32" src={allnews[index].news_image} alt="" />
+                                <h1 className="text-xl hover:text-green-800 font-medium">{allnews[index].news_title}</h1>
                         </div>
                         ))}
                     </div>          
@@ -91,8 +67,67 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <National allnews={allnews}></National>
-            <InterNational allnews={allnews}></InterNational>
+            <PartOneHome allnews={allnews}></PartOneHome>
+            <Part2Home allnews={allnews}></Part2Home>
+            <Part3Home allnews={allnews}></Part3Home>
+            <div className="flex space-x-8 mt-10 ">
+                <div>
+                    <hr className="line"/>
+                    <div className="flex items-center gap-3">
+                        <h1 className="text-3xl font-semibold mt-2 mb-2 text-green-900 ml-3">Education</h1>
+                        <FaInfinity />
+                    </div>
+                    <hr className="mb-1 line" />
+                    <hr className="line" />
+                    <div className="relative h-80 flex items-end mt-3 mb-5 bg-cover bg-center"  style={{ backgroundImage: `url(${education[lenE-1].news_image})` }}>
+                        <h1 className="text-xl text-yellow-50 font-semibold  z-10">{education[lenE-1].news_title}</h1>
+                    </div>
+                    {
+                        education.slice(-4).map((item,index)=><div className="flex mb-2 ml-2" key={index}>
+                            <h1 className="text-xl font-semibold mr-2">{index +1}.</h1>
+                            <h1 className="text-xl hover:text-green-800 font-semibold">{item.news_title}</h1>
+                        </div>)
+                    }
+                </div>
+                <div>
+                    <hr className="line"/>
+                    <div className="flex items-center gap-3">
+                            <h1 className="text-3xl font-semibold mt-2 mb-2 text-green-900 ml-3">Tech</h1>
+                        <FaInfinity />
+                    </div>
+                    <hr className="mb-1 line" />
+                    <hr className="line" />
+                    <div className="relative h-80 flex items-end mt-3 mb-5 bg-cover bg-center" style={{ backgroundImage: `url(${tech[lenT-1].news_image})` }} >
+                        <h1 className="text-xl text-yellow-50 font-semibold z-10">{tech[lenT-1].news_title}</h1>
+                    </div>
+                    {
+                        tech.slice(-4).map((item,index)=><div className="flex mb-2 ml-2" key={index}>
+                            <h1 className="text-xl font-semibold mr-2">{index +1}.</h1>
+                            <h1 className="text-xl hover:text-green-800 font-semibold">{item.news_title}</h1>
+                        </div>)
+                    }
+                    
+                </div>
+                <div>
+                    <hr className="line"/>
+                    <div className="flex items-center gap-3">
+                        <h1 className="text-3xl font-semibold mt-2 mb-2 text-green-900 ml-3">Ariculture</h1>
+                        <FaInfinity />
+                    </div>
+                    <hr className="mb-1 line" />
+                    <hr className="line" />
+                    <div className="relative h-80 flex items-end mt-3 mb-5 bg-cover bg-center" style={{ backgroundImage: `url(${agriculture[lenA-1].news_image})` }}>
+                        <h1 className="text-xl text-yellow-50 font-semibold z-10">{agriculture[lenA-1].news_title}</h1>
+                    </div>
+                    
+                    {
+                        agriculture.slice(-4).map((item,index)=><div className="flex mb-2 ml-2" key={index}>
+                            <h1 className="text-xl font-semibold mr-2">{index +1}.</h1>
+                            <h1 className="text-xl hover:text-green-800 font-semibold">{item.news_title}</h1>
+                        </div>)
+                    }
+                </div> 
+            </div>
         </div>
     );
 };

@@ -28,27 +28,33 @@ const router = createBrowserRouter([
       },
       {
         path: '/InterNational',
-        element:<InterNational></InterNational>
+        element:<InterNational></InterNational>,
+        loader: ()=> fetch('record.json')
       },
       {
         path:'/National',
-        element: <National></National>
+        element: <National></National>,
+        loader: ()=> fetch('record.json')
       },
       {
         path:'/Education',
-        element:<Education></Education>
+        element:<Education></Education>,
+        loader: ()=> fetch('record.json')
       },
       {
         path:'/Sports',
-        element:<Sports></Sports>
+        element:<Sports></Sports>,
+        loader: ()=> fetch('record.json')
       },
       {
         path:'/Tech',
-        element:<Tech></Tech>
+        element:<Tech></Tech>,
+        loader: ()=> fetch('record.json')
       },
       {
         path:'/Agriculture',
-        element:<Agriculture></Agriculture>
+        element:<Agriculture></Agriculture>,
+        loader: ()=> fetch('record.json')
       }
 
     ]
