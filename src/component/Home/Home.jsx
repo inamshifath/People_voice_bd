@@ -9,11 +9,11 @@ const Home = () => {
     const allnews = useLoaderData();
     const len = allnews.length;
     let t = [];
-    for( let i=len-2;i>=len-5;i--){
+    for( let i=len-2;i>=len-4;i--){
         t.push(i);
     }
     let l = [];
-    for( let i=len-6;i>=len-8;i--){
+    for( let i=len-5;i>=len-7;i--){
         l.push(i);
     }
 
@@ -33,25 +33,25 @@ const Home = () => {
                 <div className="grid grid-cols-3 grid-rows-3 mt-5 gap-5">
                     <div className="row-span-2 col-span-2 space-y-3 ">
                         <img className="w-full" src={allnews[len-1].news_image} alt="" />
-                        <h1 className="text-3xl hover:text-green-800 font-semibold ">{allnews[0].news_title} </h1>
+                        <h1 className="text-3xl hover:text-red-600 font-semibold ">{allnews[0].news_title} </h1>
                         <p>{allnews[len-1].news_details.slice(0,250)}<span className="text-xl font-semibold"> . . .</span></p>
                     </div>
                     <div className="row-span-2">
                         {t.map((index) => (
                             <div className="flex mb-5" key={index}>
                                 <div>
-                                    <h1 className="text-xl hover:text-green-800 font-semibold">{allnews[index].news_title}</h1>
+                                    <h1 className="text-xl hover:text-red-600  font-semibold">{allnews[index].news_title}</h1>
                                     <p>{allnews[index].news_details.slice(0,87)}<span className="text-xl font-semibold"> . . .</span></p>
                                 </div>
                                 <img className="w-40 h-28" src={allnews[index].news_image} alt="" />
                             </div>
                         ))}
                     </div>
-                    <div className="col-span-3 flex gap-2 ">
+                    <div className="col-span-3 flex gap-2 h-fit mt-6">
                         {l.map((index)=>(
                             <div className="flex items-center gap-2" key={index}>
                                 <img className="w-52 h-32" src={allnews[index].news_image} alt="" />
-                                <h1 className="text-xl hover:text-green-800 font-medium">{allnews[index].news_title}</h1>
+                                <h1 className="text-xl hover:text-red-600 font-medium">{allnews[index].news_title}</h1>
                         </div>
                         ))}
                     </div>          
@@ -74,7 +74,7 @@ const Home = () => {
                 <div>
                     <hr className="line"/>
                     <div className="flex items-center gap-3">
-                        <h1 className="text-3xl font-semibold mt-2 mb-2 text-green-900 ml-3">Education</h1>
+                        <h1 className="text-3xl font-semibold mt-2 mb-2 text-red-600 ml-3">Education</h1>
                         <FaInfinity />
                     </div>
                     <hr className="mb-1 line" />
@@ -85,14 +85,14 @@ const Home = () => {
                     {
                         education.slice(-4).map((item,index)=><div className="flex mb-2 ml-2" key={index}>
                             <h1 className="text-xl font-semibold mr-2">{index +1}.</h1>
-                            <h1 className="text-xl hover:text-green-800 font-semibold">{item.news_title}</h1>
+                            <h1 className="text-xl hover:text-red-600 font-semibold">{item.news_title}</h1>
                         </div>)
                     }
                 </div>
                 <div>
                     <hr className="line"/>
                     <div className="flex items-center gap-3">
-                            <h1 className="text-3xl font-semibold mt-2 mb-2 text-green-900 ml-3">Tech</h1>
+                            <h1 className="text-3xl font-semibold mt-2 mb-2 text-red-600 ml-3">Tech</h1>
                         <FaInfinity />
                     </div>
                     <hr className="mb-1 line" />
@@ -103,7 +103,7 @@ const Home = () => {
                     {
                         tech.slice(-4).map((item,index)=><div className="flex mb-2 ml-2" key={index}>
                             <h1 className="text-xl font-semibold mr-2">{index +1}.</h1>
-                            <h1 className="text-xl hover:text-green-800 font-semibold">{item.news_title}</h1>
+                            <h1 className="text-xl hover:text-red-600 font-semibold">{item.news_title}</h1>
                         </div>)
                     }
                     
@@ -111,7 +111,7 @@ const Home = () => {
                 <div>
                     <hr className="line"/>
                     <div className="flex items-center gap-3">
-                        <h1 className="text-3xl font-semibold mt-2 mb-2 text-green-900 ml-3">Ariculture</h1>
+                        <h1 className="text-3xl font-semibold mt-2 mb-2 text-red-600 ml-3">Ariculture</h1>
                         <FaInfinity />
                     </div>
                     <hr className="mb-1 line" />
@@ -123,7 +123,7 @@ const Home = () => {
                     {
                         agriculture.slice(-4).map((item,index)=><div className="flex mb-2 ml-2" key={index}>
                             <h1 className="text-xl font-semibold mr-2">{index +1}.</h1>
-                            <h1 className="text-xl hover:text-green-800 font-semibold">{item.news_title}</h1>
+                            <h1 className="text-xl hover:text-red-600 font-semibold">{item.news_title}</h1>
                         </div>)
                     }
                 </div> 
