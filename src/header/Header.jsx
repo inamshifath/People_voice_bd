@@ -18,9 +18,11 @@ const Header = () => {
     return (
     <div className="container mx-auto">
         <div className="flex justify-between mt-5 mb-5">
-            <img src="/src/assets/1.png" alt="" />
-            <img src="/src/assets/2.png" alt="" />
+            <img src="https://i.ibb.co/R7rjpQP/1.png" alt="" />
+            <img src="https://i.ibb.co/vDpt5r0/2.png" alt="" />
         </div>
+        
+
 
         <div className="bg-black py-2">
             <ul className="lg:flex space-x-6 font-bold text-3xl w-fit mx-auto">

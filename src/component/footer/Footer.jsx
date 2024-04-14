@@ -3,7 +3,7 @@ const Footer = () => {
     return (
         <div className="container mx-auto mt-16">
             <div className="flex bg-[#f5f5f5] py-10">
-                <img src="/src/assets/1.png" alt="" />
+                <img src="https://i.ibb.co/R7rjpQP/1.png" alt="" />
                 <div className="text-center w-fit mx-auto">
                     <h1 className="text-3xl font-bold">Publisher: Tarek Hasan</h1>
                     <h1 className="text-3xl font-bold"> Editor: Gazi Munsur Aziz</h1>
